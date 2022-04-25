@@ -12,15 +12,38 @@
 </head>
 <body class="bg-rose-700 flex flex-col items-center w-full min-h-screen">
     <h1 class="font-Archivo text-5xl font-black tracking-wider text-white text-center uppercase mt-10">Pokédex</h1>
-    <form action="" class="mt-5">
-        <input type="text" class="w-60 py-1 px-3 rounded-md outline-none shadow-lg shadow-rose-800" placeholder="Busca un pokémon">
+    <form action="" class="mt-5 flex items-center relative overflow-hidden">
+        <input type="text" class="w-60 py-1 px-3 rounded-md outline-none shadow-lg shadow-rose-800 overflow-hidden" placeholder="Busca un pokémon">
+        <button class="bg-red-600 h-full w-10 absolute right-0 ml-1 flex justify-center items-center rounded-r-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search " width="20" height="20" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="10" cy="10" r="7" />
+                <line x1="21" y1="21" x2="15" y2="15" />
+            </svg>
+        </button>
     </form>
-    <div class="container mt-10 px-3 sm:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <div class="w-full h-72 flex flex-col items-center justify-end relative rounded-md">
-            <img class="w-28 h-28 absolute top-0" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="">
-            <div class="w-full h-3/4 flex flex-col items-center justify-end rounded-t-xl rounded-b-md bg-green-600 shadow-lg shadow-green-800">
-                <h3>Bulbasaur</h3>
-                <input class="accent-green-900" type="range" max="100" value="70">
+    <div id="contenedor-cards" class="container mt-10 px-3 sm:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="w-full  flex flex-col items-center justify-end relative rounded-md">
+            <img class="w-28 h-28 absolute top-0 z-10" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="">
+            <div class="w-full h-3/4 flex flex-col items-center justify-end rounded-t-xl rounded-b-md bg-green-600 shadow-lg shadow-green-800 overflow-hidden">
+                <div class="flex flex-col justify-center items-center mb-2">
+                    <p class="text-5xl font-Archivo font-black opacity-40">#01</p>
+                    <h3 class="text-white font-Archivo text-xl">Bulbasaur</h3>
+                </div>
+                <div class="w-full grid grid-cols-2 text-white pb-2">
+                    <div class="bg-green-700 text-center p-1">
+                        <p class="text-center">Tipo</p>
+                        <p class="text-center">Debilidad</p>
+                        <p class="text-center">Habilidad</p>
+                        <p class="text-center">Evolución</p>
+                    </div>
+                    <div class="bg-green-800 text-center font-bold p-1">
+                        <p>Planta</p>
+                        <p>Aire</p>
+                        <p>Electrico</p>
+                        <p>Yvisaur</p>
+                    </div>
+                </div>
 
 
             </div>
