@@ -26,6 +26,25 @@
     <div id="contenedor-cards" class="container mt-10 px-3 sm:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12">
 
     </div>
+    <div id="modal" class="bg-slate-900/80 w-full h-full fixed top-0 right-0 left-0 bottom-0 z-20 grid place-items-center">
+        <div class="bg-bgModal bg-no-repeat bg-center bg-cover w-[90%] md:w-[70%] min-h-[450px] flex flex-col-reverse items-center justify-between p-4 rounded-lg relative overflow-hidden">
+            <div class="w-full flex justify-center items-center mb-5 relative">
+                <img src="img/pokebola.png" class="w-28 h-28" alt="pokebola">
+                <img src="img/img.png" class="w-36 h-36 absolute ml-20" alt="pokemon">
+            </div>
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold my-3 uppercase"><span>#999</span> pokemon</h2>
+                <ul>
+                    <li>Región: Kanto</li>
+                    <li>Habitat: Cueva</li>
+                    <li>Habilidad: Reduce daños</li>
+                    <li>Movimientos: Golpea con la cola</li>
+
+                </ul>
+            </div>
+            <button id="btn-cerrar" class="w-8 h-8 bg-slate-100 text-black font-bold rounded-bl-lg absolute top-0 right-0">X</button>
+        </div>
+    </div>
     <button id="cargar-mas" class="my-8 py-2 px-4 bg-indigo-800 hover:bg-indigo-900 text-white font-bold rounded-md">Cargar más</button>
     <footer class="w-full mt-auto">
         <p class="text-white text-center my-3">Leo Ss - 2022</p>

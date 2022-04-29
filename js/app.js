@@ -2,7 +2,7 @@ import { contenedorCard, crearCard } from "./cards.js";
 
 const urlPokemon = 'https://pokeapi.co/api/v2/pokemon/'
 
-const registros = 96;
+const registros = 24;
 let inicio = 1
 let index, fin;
 calcularInicioIteracion();
