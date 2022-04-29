@@ -1,131 +1,169 @@
-const contenedorCard = document.querySelector('#contenedor-cards');
+export const contenedorCard = document.querySelector('#contenedor-cards');
 
-const cardsColors = {
+const pokeReferencias = {
     grass: {
         card: 'bg-green-600',
         col1: 'bg-green-700',
         col2: 'bg-green-800',
         shadow: 'shadow-green-800',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Planta'
     },
     fire:{
         card: 'bg-orange-500',
         col1: 'bg-orange-600',
         col2: 'bg-orange-700',
         shadow: 'shadow-orange-700',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Fuego'
     },
     water: {
         card: 'bg-blue-500',
         col1: 'bg-blue-600',
         col2: 'bg-blue-700',
         shadow: 'shadow-blue-700',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Agua'
     },
     bug: {
         card: 'bg-lime-500',
         col1: 'bg-lime-600',
         col2: 'bg-lime-700',
         shadow: 'shadow-lime-700',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Bicho'
     },
     normal: {
         card: 'bg-amber-200',
         col1: 'bg-amber-300',
         col2: 'bg-amber-400',
         shadow: 'shadow-amber-400',
-        text: 'text-black'
+        textColor: 'text-black',
+        text: 'Normal'
+    },
+    flying: {
+        card: 'bg-amber-200',
+        col1: 'bg-amber-300',
+        col2: 'bg-amber-400',
+        shadow: 'shadow-amber-400',
+        textColor: 'text-black',
+        text: 'Volador'
     },
     poison: {
         card: 'bg-purple-600',
         col1: 'bg-purple-700',
         col2: 'bg-purple-800',
         shadow: 'shadow-purple-800',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Veneno'
     },
     electric: {
         card: 'bg-yellow-300',
         col1: 'bg-yellow-400',
         col2: 'bg-yellow-500',
         shadow: 'shadow-yellow-500',
-        text: 'text-black'
+        textColor: 'text-black',
+        text:'Electrico'
     },
     ground: {
         card: 'bg-yellow-600',
         col1: 'bg-yellow-700',
         col2: 'bg-yellow-800',
         shadow: 'shadow-yellow-800',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Tierra'
     },
     ice: {
         card: 'bg-sky-200',
         col1: 'bg-sky-300',
         col2: 'bg-sky-400',
         shadow: 'shadow-sky-400',
-        text: 'text-black'
+        textColor: 'text-black',
+        text: 'Hielo'
     },
     fairy: {
         card: 'bg-rose-300',
         col1: 'bg-rose-400',
         col2: 'bg-rose-500',
         shadow: 'shadow-rose-500',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Hada'
     },
     fighting: {
         card: 'bg-red-500',
         col1: 'bg-red-600',
         col2: 'bg-red-700',
         shadow: 'shadow-red-600',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Lucha'
     },
     psychic: {
         card: 'bg-yellow-300',
         col1: 'bg-yellow-400',
         col2: 'bg-yellow-500',
         shadow: 'shadow-yellow-500',
-        text: 'text-white'
+        textColor: 'text-black',
+        text: 'Psiquico'
     },
     rock: {
         card: 'bg-amber-700',
         col1: 'bg-amber-800',
         col2: 'bg-amber-900',
         shadow: 'shadow-amber-900',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Roca'
     },
     ghost: {
         card: 'bg-violet-700',
         col1: 'bg-violet-800',
         col2: 'bg-violet-900',
         shadow: 'shadow-violet-900',
-        text: 'text-white'
+        textColor: 'text-white',
+        text: 'Fantasma'
     },
     dragon: {
         card: 'bg-indigo-300',
         col1: 'bg-indigo-400',
         col2: 'bg-indigo-500',
         shadow: 'shadow-indigo-500',
-        text: 'text-white'
+        textColor: 'text-black',
+        text: 'Dragon'
+    },
+    dark: {
+        card: 'bg-indigo-300',
+        col1: 'bg-indigo-400',
+        col2: 'bg-indigo-500',
+        shadow: 'shadow-indigo-500',
+        textColor: 'text-black',
+        text: 'Oscuro'
+    },
+    steel: {
+        card: 'bg-zinc-200',
+        col1: 'bg-zinc-300',
+        col2: 'bg-zinc-400',
+        shadow: 'shadow-zinc-400',
+        textColor: 'text-black',
+        text: 'Acero'
     },
 
 
 }
 
 
-export function crearCard(obj) {
-    const {id,sprites: {other: { dream_world: {front_default}}}, types:[{type: {name}}],} = obj
+export async function crearCard(obj) {
+    const {base_experience, height, id, sprites: {other: { 'official-artwork': {front_default}}}, types:[{type: {name}}], weight} = obj
+
     const img = front_default;
     const nombre = obj.name
     const tipo = name;
-    const debilidad = 'default'
-    const habilidad = 'Hdefault'
-    const evolucion = 'Edefault'
 
     //Estilos para la card según el tipo de pokémon
-    const colorCard = cardsColors[tipo].card
-    const colorCol1 = cardsColors[tipo].col1
-    const colorCol2 = cardsColors[tipo].col2
-    const shadow = cardsColors[tipo].shadow
-    const text = cardsColors[tipo].text
+    const colorCard = pokeReferencias[tipo].card
+    const colorCol1 = pokeReferencias[tipo].col1
+    const colorCol2 = pokeReferencias[tipo].col2
+    const shadow = pokeReferencias[tipo].shadow
+    const textColor = pokeReferencias[tipo].textColor
+    const text = pokeReferencias[tipo].text
 
     //Crear card
     const divCard = document.createElement('div');
@@ -149,13 +187,13 @@ export function crearCard(obj) {
     pNumero.textContent = `#${id}`;
 
     const tNombre = document.createElement('h3');
-    tNombre.classList.add(`${text}`, 'font-Archivo', 'text-lg', 'md:text-xl', 'font-bold', 'uppercase');
+    tNombre.classList.add(`${textColor}`, 'font-Archivo', 'text-lg', 'md:text-xl', 'font-bold', 'uppercase');
     tNombre.textContent = nombre;
 
 
     //Crear div grid caracteristicas del pokemon
     const divGrid = document.createElement('div');
-    divGrid.classList.add('w-full', 'grid', 'grid-cols-2', `${text}`, 'pb-2');
+    divGrid.classList.add('w-full', 'grid', 'grid-cols-2', `${textColor}`, 'pb-2');
 
     //Crear div col 1
     const divCol1 = document.createElement('div');
@@ -166,45 +204,45 @@ export function crearCard(obj) {
     pTipo.classList.add('text-center');
     pTipo.textContent = 'Tipo';
 
-    const pDebilidad = document.createElement('p');
-    pDebilidad.classList.add('text-center');
-    pDebilidad.textContent = 'Debilidad';
+    const pAltura = document.createElement('p');
+    pAltura.classList.add('text-center');
+    pAltura.textContent = 'Altura';
 
-    const pHabilidad = document.createElement('p');
-    pHabilidad.classList.add('text-center');
-    pHabilidad.textContent = 'Habilidad';
+    const pPeso = document.createElement('p');
+    pPeso.classList.add('text-center');
+    pPeso.textContent = 'Peso';
 
-    const pEvolucion = document.createElement('p');
-    pEvolucion.classList.add('text-center');
-    pEvolucion.textContent = 'Evolución';
+    const pXP = document.createElement('p');
+    pXP.classList.add('text-center');
+    pXP.textContent = 'XP';
 
     //Agregar el contenido a divCol1
     divCol1.appendChild(pTipo);
-    divCol1.appendChild(pDebilidad);
-    divCol1.appendChild(pHabilidad);
-    divCol1.appendChild(pEvolucion);
+    divCol1.appendChild(pAltura);
+    divCol1.appendChild(pPeso);
+    divCol1.appendChild(pXP);
 
     //Crear divCol2
     const divCol2 = document.createElement('div');
-    divCol2.classList.add(`${colorCol2}`, `${text}`, 'text-center', 'font-bold', 'p-1');
+    divCol2.classList.add(`${colorCol2}`, `${textColor}`, 'text-center', 'font-bold', 'p-1');
 
     //Crear contenido divCol2
     const pTipoContenido = document.createElement('p');
-    pTipoContenido.textContent = tipo;
+    pTipoContenido.textContent = text;
 
-    const pDebilidadContenido = document.createElement('p');
-    pDebilidadContenido.textContent = debilidad;
+    const pAlturaContenido = document.createElement('p');
+    pAlturaContenido.textContent = height/10 + " Mts";
 
-    const pHabilidadContenido = document.createElement('p');
-    pHabilidadContenido.textContent = habilidad;
+    const pPesoContenido = document.createElement('p');
+    pPesoContenido.textContent = weight + " Kg";
 
     const pEvolucionContenido = document.createElement('p');
-    pEvolucionContenido.textContent = evolucion;
+    pEvolucionContenido.textContent = base_experience;
 
     //Agregar el contenido a divCol2
     divCol2.appendChild(pTipoContenido);
-    divCol2.appendChild(pDebilidadContenido);
-    divCol2.appendChild(pHabilidadContenido);
+    divCol2.appendChild(pAlturaContenido);
+    divCol2.appendChild(pPesoContenido);
     divCol2.appendChild(pEvolucionContenido);
 
     //Agregar contenido al div grid
