@@ -1,3 +1,4 @@
+import { abrirModal } from "./modal.js";
 export const contenedorCard = document.querySelector('#contenedor-cards');
 
 const pokeReferencias = {
@@ -173,10 +174,11 @@ export async function crearCard(obj) {
     const imgCard = document.createElement('img');
     imgCard.src = img;
     imgCard.classList.add('w-28', 'h-28', 'absolute', 'top-0', 'z-10');
+    imgCard.alt = nombre;
 
     //Crear div con la info
     const divInfo = document.createElement('div');
-    divInfo.classList.add('w-full', 'h-3/4', 'flex', 'flex-col', 'items-center', 'justify-end', 'rounded-t-xl', 'rounded-b-md', `${colorCard}`, 'shadow-xl', `${shadow}`, 'overflow-hidden');
+    divInfo.classList.add('w-full', 'h-3/4', 'flex', 'flex-col', 'items-center', 'justify-end', 'rounded-t-xl', 'rounded-b-md', `${colorCard}`, 'shadow-xl', `${shadow}`, 'overflow-hidden', 'cursor-pointer');
 
     //Crear div contenedor del numero y el nombre
     const divTitulo = document.createElement('div');
@@ -263,5 +265,9 @@ export async function crearCard(obj) {
 
     //Agregar card al html
     contenedorCard.appendChild(divCard);
+
+    divCard.onclick = () =>{
+        abrirModal(id, img, nombre)
+    }
 
 }

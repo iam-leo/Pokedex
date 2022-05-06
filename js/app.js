@@ -1,8 +1,10 @@
 import { contenedorCard, crearCard } from "./cards.js";
+import { btnCerrar } from "./modal.js";
 
 const urlPokemon = 'https://pokeapi.co/api/v2/pokemon/'
 
 const registros = 24;
+let resultado;
 let inicio = 1
 let index, fin;
 calcularInicioIteracion();
@@ -12,14 +14,9 @@ calcularFinIteracion();
 async function mostrarPokemones () {
     for(let i = index+1 ; i<= fin; i++){
         const id = i;
-        console.log('ID: '+id+' INICIO: '+inicio+' FIN: '+fin)
-            await fetch(urlPokemon+id)
-            .then( res => res.json())
-            .then( resultado => {
-                console.log(resultado);
-                crearCard(resultado);
-            })
-            .catch(error => console.log(error))
+           const res = await fetch(urlPokemon+id)
+           resultado = await res.json()
+           crearCard(resultado);
     }
 }
 
