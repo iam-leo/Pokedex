@@ -1,6 +1,7 @@
 import { abrirModal } from "./modal.js";
 export const contenedorCard = document.querySelector('#contenedor-cards');
 
+//REFERENCIAS PARA ESTILIZAR LAS CARDS
 const pokeReferencias = {
     grass: {
         card: 'bg-green-600',
@@ -150,23 +151,24 @@ const pokeReferencias = {
 
 }
 
-
+//CREAR CARD
 export async function crearCard(obj) {
+    //Extraemos los datos del objeto
     const {abilities, base_experience, height, id, sprites: {other: { 'official-artwork': {front_default}}}, types:[{type: {name}}], weight} = obj
-    
     const img = front_default;
-    const nombre = obj.name
+    const nombre = obj.name;
+    const movimientosURL = obj.moves[0].move.url;
     const tipo = name;
 
     //Estilos para la card según el tipo de pokémon
-    const colorCard = pokeReferencias[tipo].card
-    const colorCol1 = pokeReferencias[tipo].col1
-    const colorCol2 = pokeReferencias[tipo].col2
-    const shadow = pokeReferencias[tipo].shadow
-    const textColor = pokeReferencias[tipo].textColor
-    const text = pokeReferencias[tipo].text
+    const colorCard = pokeReferencias[tipo].card;
+    const colorCol1 = pokeReferencias[tipo].col1;
+    const colorCol2 = pokeReferencias[tipo].col2;
+    const shadow = pokeReferencias[tipo].shadow;
+    const textColor = pokeReferencias[tipo].textColor;
+    const text = pokeReferencias[tipo].text;
 
-    //Crear card
+    //Crear div card
     const divCard = document.createElement('div');
     divCard.classList.add('w-full', 'h-72', 'flex', 'flex-col', 'items-center', 'justify-end', 'relative', 'rounded-md');
 
@@ -252,8 +254,8 @@ export async function crearCard(obj) {
     divGrid.appendChild(divCol2);
 
     //Agregar los parrafos al div contenedor del nombre y numero
-    divTitulo.appendChild(pNumero)
-    divTitulo.appendChild(tNombre)
+    divTitulo.appendChild(pNumero);
+    divTitulo.appendChild(tNombre);
 
     //Agregar el contenido al div info
     divInfo.appendChild(divTitulo);
@@ -266,8 +268,9 @@ export async function crearCard(obj) {
     //Agregar card al html
     contenedorCard.appendChild(divCard);
 
+    //Escuchamos cuando el usuario le da click a la card
     divCard.onclick = () =>{
-        abrirModal(abilities, id, img, nombre)
+        abrirModal(abilities, id, img, movimientosURL, nombre);
     }
 
 }
