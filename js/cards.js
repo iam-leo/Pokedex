@@ -152,8 +152,8 @@ const pokeReferencias = {
 
 
 export async function crearCard(obj) {
-    const {base_experience, height, id, sprites: {other: { 'official-artwork': {front_default}}}, types:[{type: {name}}], weight} = obj
-
+    const {abilities, base_experience, height, id, sprites: {other: { 'official-artwork': {front_default}}}, types:[{type: {name}}], weight} = obj
+    
     const img = front_default;
     const nombre = obj.name
     const tipo = name;
@@ -267,7 +267,7 @@ export async function crearCard(obj) {
     contenedorCard.appendChild(divCard);
 
     divCard.onclick = () =>{
-        abrirModal(id, img, nombre)
+        abrirModal(abilities, id, img, nombre)
     }
 
 }

@@ -1,7 +1,6 @@
 const modal = document.querySelector('#modal');
 const cardModal = document.querySelector('#card-modal');
 const nombrePokemon = document.querySelector('#nombre');
-const num = document.querySelector('#num');
 export const btnCerrar = document.querySelector('#btn-cerrar');
 const imgPokemonHtml = document.querySelector('#img-pokemon');
 const regionHtml = document.querySelector('#region');
@@ -15,13 +14,14 @@ btnCerrar.addEventListener('click', () => {
     modal.classList.add('hidden')
 });
 
-export async function abrirModal(id, img, nombre){
+export async function abrirModal(abilities, id, img, nombre){
     pokebola.classList.add('hidden');
     pokemon.classList.add('hidden');
     limpiarHtml();
     modal.classList.remove('hidden');
     spinner();
 
+    const habilidades = await obtenerHabilidades(abilities);
     const region = await obtenerRegion(id);
     const habitat = await obtenerHabitat(nombre);
 
@@ -31,9 +31,10 @@ export async function abrirModal(id, img, nombre){
 
     habitatHtml.textContent = `Habitat: ${habitat}`
     regionHtml.textContent = `Región: ${region.name}`
+    habilidadHtml.innerHTML = `Habilidad: <span style="margin-left: 4px">•${habilidades[0][0]}</span> <br> <span style="margin-left: 80px"> •${habilidades[1][0]} </span>`
     imgPokemonHtml.src = img;
     nombrePokemon.textContent = `#${id} ${nombre}`;
-    
+
 }
 
 async function obtenerRegion(id){
@@ -90,9 +91,8 @@ async function obtenerHabitat(nombrePokemon){
     for(let i=1; i<=9; i++){
         const res = await fetch(url+i);
         const habitats = await res.json();
-        
+
         habitats.pokemon_species.forEach(pokemon => {
-            console.log(pokemon);
             if(pokemon.name === nombrePokemon){
                 const habitat = habitats.names[1].name;
                 console.log(habitat);
@@ -100,10 +100,37 @@ async function obtenerHabitat(nombrePokemon){
                 return;
             }
         });
-        
+
         if(habitatPokemon !== '' && habitatPokemon !== undefined){
             return habitatPokemon
         }
 
     }
+}
+
+async function obtenerHabilidades(abilities) {
+    //console.log(abilities);
+    let habilidades = []
+    abilities.forEach(async ability =>{
+        habilidades.push( await obtenerHabilidad(ability.ability.url));
+    });
+    return habilidades;
+}
+
+async function obtenerHabilidad(url){
+    const respuesta = await fetch(url);
+    const habilidades = await respuesta.json();
+    //console.log(habilidades.flavor_text_entries);
+    let habilidadesPokemon = []
+
+    for(let i=0; i<habilidades.flavor_text_entries.length; i++){
+        if(habilidades.flavor_text_entries[i].language.name === 'es'){
+            //console.log(habilidades.flavor_text_entries[i].flavor_text)
+            habilidadesPokemon.push(habilidades.flavor_text_entries[i].flavor_text);
+        }
+    }
+
+    habilidadesPokemon = habilidadesPokemon.filter( (hab, i) => habilidadesPokemon.indexOf(hab) === i);
+
+    return habilidadesPokemon;
 }
