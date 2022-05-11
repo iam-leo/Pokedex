@@ -170,12 +170,12 @@ export async function crearCard(obj) {
 
     //Crear div card
     const divCard = document.createElement('div');
-    divCard.classList.add('w-full', 'h-72', 'flex', 'flex-col', 'items-center', 'justify-end', 'relative', 'rounded-md');
+    divCard.classList.add('w-full', 'h-72', 'flex', 'flex-col', 'items-center', 'justify-end', 'relative', 'rounded-md', 'card-pokemon');
 
     //Crear elemento img
     const imgCard = document.createElement('img');
     imgCard.src = img;
-    imgCard.classList.add('w-28', 'h-28', 'absolute', 'top-0', 'z-10');
+    imgCard.classList.add('w-28', 'h-28', 'absolute', 'top-0', 'z-10', 'cursor-pointer');
     imgCard.alt = nombre;
 
     //Crear div con la info

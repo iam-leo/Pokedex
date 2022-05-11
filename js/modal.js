@@ -2,7 +2,7 @@
 const modal = document.querySelector('#modal');
 const cardModal = document.querySelector('#card-modal');
 const nombrePokemon = document.querySelector('#nombre');
-export const btnCerrar = document.querySelector('#btn-cerrar');
+const btnCerrar = document.querySelector('#btn-cerrar');
 const imgPokemonHtml = document.querySelector('#img-pokemon');
 const regionHtml = document.querySelector('#region');
 const habitatHtml = document.querySelector('#habitat')
@@ -29,7 +29,7 @@ export async function abrirModal(abilities, id, img, movimientosURL, nombre){
     modal.classList.remove('hidden');
 
     //Cargamos spinner mientras obtenemos los resultados correspondientes
-    spinner();
+    spinner(cardModal);
 
     //Resultados
     const habilidades = await obtenerHabilidades(abilities);
@@ -97,7 +97,7 @@ async function obtenerRegion(id){
 }
 
 //SPINNER
-function spinner(){
+export function spinner(elemento){
     const spinner = document.createElement('div');
     spinner.classList.add('spinner')
     spinner.innerHTML = `
@@ -105,7 +105,7 @@ function spinner(){
         <div class="dot2"></div>
     `;
     
-    cardModal.appendChild(spinner);
+    elemento.appendChild(spinner);
 }
 
 //RESETEAR CONTENIDO DE LA VENTANA MODAL

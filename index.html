@@ -13,15 +13,17 @@
 </head>
 <body class="bg-cyan-700 flex flex-col items-center w-full min-h-screen">
     <h1 class="font-Archivo text-5xl font-black tracking-wider text-white text-center uppercase mt-10">Pokédex</h1>
-    <form action="" class="mt-5 flex items-center relative overflow-hidden">
-        <input type="text" class="w-60 py-1 px-3 rounded-md outline-none shadow-lg shadow-rose-800 overflow-hidden" placeholder="Busca un pokémon">
-        <button class="bg-red-600 h-full w-10 absolute right-0 ml-1 flex justify-center items-center rounded-r-md">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search " width="20" height="20" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <circle cx="10" cy="10" r="7" />
-                <line x1="21" y1="21" x2="15" y2="15" />
-            </svg>
-        </button>
+    <form action="" class="mt-5 flex flex-col items-center overflow-hidden">
+        <div class="flex items-center relative">
+            <input type="text" id="input-busqueda" class="w-60 py-1 px-3 rounded-md outline-none shadow-lg shadow-rose-800 overflow-hidden" placeholder="Busca un pokémon">
+            <button id="btn-busqueda" class="bg-red-600 h-full w-10 absolute right-0 ml-1 flex justify-center items-center rounded-r-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search " width="20" height="20" viewBox="0 0 24 24" stroke-width="3" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="10" cy="10" r="7" />
+                    <line x1="21" y1="21" x2="15" y2="15" />
+                </svg>
+            </button>
+        </div>
     </form>
     <div id="contenedor-cards" class="container mt-10 px-3 sm:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-12">
 
@@ -45,6 +47,7 @@
             </div>
     </div>
     <button id="cargar-mas" class="my-8 py-2 px-4 bg-indigo-800 hover:bg-indigo-900 text-white font-bold rounded-md">Cargar más</button>
+    <a href="index.html" id="regresar" class="my-8 py-2 px-4 bg-indigo-800 hover:bg-indigo-900 text-white font-bold rounded-md hidden">Regresar</a>
     <footer class="w-full mt-auto">
         <p class="text-white text-center my-3">Leo Ss - 2022</p>
     </footer>
