@@ -195,7 +195,7 @@ export async function crearCard(obj) {
     tNombre.textContent = nombre;
 
 
-    //Crear div grid caracteristicas del pokemon
+    //Crear div grid características del pokemon
     const divGrid = document.createElement('div');
     divGrid.classList.add('w-full', 'grid', 'grid-cols-2', `${textColor}`, 'pb-2');
 
@@ -253,7 +253,7 @@ export async function crearCard(obj) {
     divGrid.appendChild(divCol1);
     divGrid.appendChild(divCol2);
 
-    //Agregar los parrafos al div contenedor del nombre y numero
+    //Agregar los párrafos al div contenedor del nombre y numero
     divTitulo.appendChild(pNumero);
     divTitulo.appendChild(tNombre);
 
